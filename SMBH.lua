@@ -1,6 +1,6 @@
 --[[
 SharedMedia_ButtonHighlight - Additional information about player spells.
-(c) 2014 Adirelle (adirelle@gmail.com)
+(c) 2014-2023 Adirelle (adirelle@gmail.com)
 
 This file is part of SharedMedia_ButtonHighlight.
 
@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with SharedMedia_ButtonHighlight.  If not, see <http://www.gnu.org/licenses/>.
 --]]
 
-local MAJOR, MINOR, lib = "SharedMedia_ButtonHighlight", 1
+local MAJOR, MINOR, lib = "SharedMedia_ButtonHighlight", 2
 if LibStub then
 	lib = LibStub:NewLibrary(MAJOR, MINOR)
 	if not lib then return end
@@ -29,12 +29,12 @@ end
 local LSM = LibStub('LibSharedMedia-3.0')
 local BUTTON_HIGHLIGHT_MEDIATYPE = "button_highlight"
 
-local L = setmetatable({}, { __index = function(t, k) return k end })
+local L = setmetatable({}, { __index = function(_, k) return k end })
 
 LSM.MediaType.BUTTON_HIGHLIGHT = BUTTON_HIGHLIGHT_MEDIATYPE
 
 -- Register alternative highlights
-local texturePath = [[Interface\AddOns\]]..strmatch(debugstack(1, 1, 1), [[^.-AddOns\(.-\)SMBH%.lua]])..[[media\]]
+local texturePath = [[Interface\AddOns\]]..strmatch(debugstack(1, 1, 1), '^.-AddOns/(.+/)SMBH%.lua')..[[media\]]
 for file, label in pairs {
 	["blank"]                    = L["No border"],
 	["bottom-top-gradient"]      = L["Bottom to top gradient"],
